@@ -64,7 +64,7 @@ public class Generation {
 		//remove worst performing agents
 		while (nofAgents*(1-ratioToRemoveEachGeneration) < agentScores.keySet().size()) {
 			//System.out.println("will remove agent with id: " + getWorstAgent().getAgentId());
-			agentScores.remove(getWorstAgent());
+			agentScores.remove(getWorstAgent(1));
 		}
 		
 		//set old agents' score to 0
@@ -76,11 +76,13 @@ public class Generation {
 			}
 		}
 		
+		agentScores.put(new Agent(),0.0);
+		agentScores.put(new Agent(),0.0);
+		
 		int i=1;
 		while (agentScores.keySet().size()<nofAgents) { //add new agents in an evolutionary way
 			agentScores.put(new Agent(getBestAgent(i),getBestAgent(++i)),0.0);
 		}
-		//fillGenerationWithAgents(); //add new agents randomly after every generation
 	}
 	
 	void flushGeneration() {
@@ -127,7 +129,6 @@ public class Generation {
 	
 	void printGenerationBPAWPAAA(PrintStream generationDetailsOutput) {
 		Agent bestAgent = getBestAgent(1);
-		Agent worstAgent = getWorstAgent();
 		
 		double[] totalBehavior = new double[4];
 		for (Agent a: agentScores.keySet()) {
@@ -136,39 +137,52 @@ public class Generation {
 			}
 		}
 		
-		final int nofBestAgents = 10;
+		final int nofAgentsIncludedInAverage = (int) (nofAgents*0.1);
 		double[] averageOfBestAgents = new double[4];
-		for (int i=1; i<nofBestAgents; i++) {
+		double[] averageOfWorstAgents = new double[4];
+		for (int i=1; i<nofAgentsIncludedInAverage; i++) {
 			for (int j=0; j<4; j++) {
 				averageOfBestAgents[j] += getBestAgent(i).getBehavior()[j];
+				averageOfWorstAgents[j] += getWorstAgent(i).getBehavior()[j];
 			}
 		}
 		
 		generationDetailsOutput.println(String.format(
-				"%d,%s,%s,%f,%f,%f,%f,%f,%f,%f,%f",
+				"%d,%s,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
 				generation,
 				bestAgent.getBehaviourForCsv(),
-				worstAgent.getBehaviourForCsv(),
+				averageOfWorstAgents[0]/nofAgentsIncludedInAverage,
+				averageOfWorstAgents[1]/nofAgentsIncludedInAverage,
+				averageOfWorstAgents[2]/nofAgentsIncludedInAverage,
+				averageOfWorstAgents[3]/nofAgentsIncludedInAverage,
 				totalBehavior[0]/nofAgents,
 				totalBehavior[1]/nofAgents,
 				totalBehavior[2]/nofAgents,
 				totalBehavior[3]/nofAgents,
-				averageOfBestAgents[0]/nofBestAgents,
-				averageOfBestAgents[1]/nofBestAgents,
-				averageOfBestAgents[2]/nofBestAgents,
-				averageOfBestAgents[3]/nofBestAgents
+				averageOfBestAgents[0]/nofAgentsIncludedInAverage,
+				averageOfBestAgents[1]/nofAgentsIncludedInAverage,
+				averageOfBestAgents[2]/nofAgentsIncludedInAverage,
+				averageOfBestAgents[3]/nofAgentsIncludedInAverage
 			));
 
 	}
 	
-	Agent getWorstAgent() {
+	Agent getWorstAgent(int rank) {
 		Agent agentWithLowestScore=null;
 		for (Agent a: agentScores.keySet()) {
 			if (agentWithLowestScore==null || agentScores.get(agentWithLowestScore)>agentScores.get(a)) {
 				agentWithLowestScore = a;
 			}
 		}
-		return agentWithLowestScore;
+		if (rank==1) {
+			return agentWithLowestScore;
+		} else {
+			double agentScore = agentScores.get(agentWithLowestScore);
+			agentScores.remove(agentWithLowestScore);
+			Agent a = getBestAgent(rank-1);
+			agentScores.put(agentWithLowestScore, agentScore);
+			return a;
+		}
 	}
 	
 	Agent getBestAgent(int rank) {

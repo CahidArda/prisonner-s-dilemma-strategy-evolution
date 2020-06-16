@@ -30,7 +30,7 @@ public class Main {
 		File generationBPAWPAAAFile = new File(generationBPAWPAAAFileName);
 		PrintStream generationBPAWPAAAOutput = new PrintStream(generationBPAWPAAAFile);
 		//BRA:best performing agent, WPA:worst performing agent, AA: agent average
-		generationBPAWPAAAOutput.println("Generation, BPA-R, BPA-S, BPA-T, BPA-P, WPA-R, WPA-S, WPA-T, WPA-P, AA-R, AA-S, AA-T, AA-P, TBPA-R, TBPA-S, TBPA-T, TBPA-P");
+		generationBPAWPAAAOutput.println("Generation, BPA-R, BPA-S, BPA-T, BPA-P, AWPA-R, AWPA-S, AWPA-T, AWPA-P, AA-R, AA-S, AA-T, AA-P, ABPA-R, ABPA-S, ABPA-T, ABPA-P");
 		
 		
 		int testMode = 2;
