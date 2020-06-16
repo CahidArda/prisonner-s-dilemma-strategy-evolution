@@ -136,15 +136,27 @@ public class Generation {
 			}
 		}
 		
+		final int nofBestAgents = 10;
+		double[] averageOfBestAgents = new double[4];
+		for (int i=1; i<nofBestAgents; i++) {
+			for (int j=0; j<4; j++) {
+				averageOfBestAgents[j] += getBestAgent(i).getBehavior()[j];
+			}
+		}
+		
 		generationDetailsOutput.println(String.format(
-				"%d,%s,%s,%f,%f,%f,%f",
+				"%d,%s,%s,%f,%f,%f,%f,%f,%f,%f,%f",
 				generation,
 				bestAgent.getBehaviourForCsv(),
 				worstAgent.getBehaviourForCsv(),
 				totalBehavior[0]/nofAgents,
 				totalBehavior[1]/nofAgents,
 				totalBehavior[2]/nofAgents,
-				totalBehavior[3]/nofAgents
+				totalBehavior[3]/nofAgents,
+				averageOfBestAgents[0]/nofBestAgents,
+				averageOfBestAgents[1]/nofBestAgents,
+				averageOfBestAgents[2]/nofBestAgents,
+				averageOfBestAgents[3]/nofBestAgents
 			));
 
 	}

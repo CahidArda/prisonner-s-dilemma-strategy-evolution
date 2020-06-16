@@ -13,7 +13,6 @@ public class Main {
 			
 			if (i%printEvery==0 || i+1==nofGenerations) {
 				g.printGenerationBPAWPAAA(generationBPAWPAAAOutput);
-				g.printGeneration("output/");
 				System.out.println(i);
 			}
 			
@@ -31,7 +30,7 @@ public class Main {
 		File generationBPAWPAAAFile = new File(generationBPAWPAAAFileName);
 		PrintStream generationBPAWPAAAOutput = new PrintStream(generationBPAWPAAAFile);
 		//BRA:best performing agent, WPA:worst performing agent, AA: agent average
-		generationBPAWPAAAOutput.println("Generation, BPA-R, BPA-S, BPA-T, BPA-P, WPA-R, WPA-S, WPA-T, WPA-P, AA-R, AA-S, AA-T, AA-P");
+		generationBPAWPAAAOutput.println("Generation, BPA-R, BPA-S, BPA-T, BPA-P, WPA-R, WPA-S, WPA-T, WPA-P, AA-R, AA-S, AA-T, AA-P, TBPA-R, TBPA-S, TBPA-T, TBPA-P");
 		
 		
 		int testMode = 2;
@@ -76,7 +75,8 @@ public class Main {
 			
 		} else if (testMode==2) {
 			Generation myG = new Generation(100, 20, 0.15); //nofAgents, nofGamesEachRound, ratioToRemove			
-			runGeneration(myG, 500000, 500, generationBPAWPAAAOutput);
+			runGeneration(myG, 50000, 25, generationBPAWPAAAOutput);
+			myG.printGeneration("output/");
 		}
 	}
 }

@@ -10,7 +10,7 @@ def getBestPerformingAgentOverTime():
 		
 		axes = plt.gca()
 		axes.set_ylim([0,1])
-		plt.subplot(311)
+		plt.subplot(221)
 		plt.plot(x, df[column].values, label=column)
 		plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
@@ -23,7 +23,7 @@ def getWorstPerformingAgentOverTime():
 
 		axes = plt.gca()
 		axes.set_ylim([0,1])
-		plt.subplot(312)
+		plt.subplot(224)
 		plt.plot(x, df[column].values, label=column)
 		plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
@@ -36,9 +36,22 @@ def getAverageAgentOverTime():
 		
 		axes = plt.gca()
 		axes.set_ylim([0,1])
-		plt.subplot(313)
+		plt.subplot(223)
 		plt.plot(x, df[column].values, label=column)
 		plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+
+def getBestAgentsOverTime():
+	#print(df[df.columns[9:13]])
+	print()
+	x = df['Generation']
+	for column in df.columns[13:17]:
+		
+		axes = plt.gca()
+		axes.set_ylim([0,1])
+		plt.subplot(222)
+		plt.plot(x, df[column].values, label=column)
+		plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+
 
 realTime = True
 
@@ -48,12 +61,14 @@ if realTime:
 		getBestPerformingAgentOverTime()
 		getWorstPerformingAgentOverTime()
 		getAverageAgentOverTime()	
-		plt.pause(4)
+		getBestAgentsOverTime()
+		plt.pause(2)
 		plt.clf()
 else:
 	df = pd.read_csv("generationBPAWPAAAOutput.csv")
 	getBestPerformingAgentOverTime()
 	getWorstPerformingAgentOverTime()
 	getAverageAgentOverTime()	
+	getBestAgentsOverTime()
 
 plt.show()
