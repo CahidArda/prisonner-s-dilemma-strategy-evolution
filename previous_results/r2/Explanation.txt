@@ -1,0 +1,6 @@
+int nofAgents = 150;
+int nofGamesEachRound = 80;
+double ratioToRemove = 0.3;
+
+int nofGenerations = 3000;
+int printEvery = 50;
