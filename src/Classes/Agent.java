@@ -30,7 +30,7 @@ public class Agent implements Comparable<Agent> {
 		behaviour[0] = a;
 		behaviour[1] = b;
 		behaviour[2] = c;
-		behaviour[3] = d; 
+		behaviour[3] = d;
 	}
 	
 	//mate two agents

@@ -36,7 +36,7 @@ def getAverageAgentOverTime():
 
 realTime = False
 fileCode = "r3"
-fileName = "{}/generationBPAWPAAAOutput.csv".format(fileCode)
+fileName = "{}/generationDetailsOutput.csv".format(fileCode)
 
 if realTime:
 	for i in range(1000):
