@@ -6,7 +6,7 @@ public class Agent implements Comparable<Agent> {
 	private Random random;
 	private static int lastId = 0;
 	private int id;
-	private double[] behavior;
+	volatile private double[] behavior;
 	private long score;
 	
 	//TODO switch to protected
