@@ -14,6 +14,7 @@ public class Generation {
 	private Random random;
 	
 	int generationId;
+	long totalScore = 0;
 	
 	Agent[][] agents;
 	Arena arena;
@@ -50,34 +51,28 @@ public class Generation {
 		arena.runArena();
 	}
 	
-	final double mutationChance = 0.1;
+	final double mutationChance = 0.2;
 	private void updateGenerationAfterRunning() {
 		generationId++;
 		//remove worst performing agents
 		for (int i=0; i<nofAgents*ratioToRemoveEachRound; i++) {
 			removeWorstAgent();
 		}
+		
+		for (int i=0; i<nofAgents*ratioToRemoveEachRound; i++) {
+			addAgentToGeneration(new Agent(getBestAgent(i+1), getBestAgent(i+2)));
+		}
 				
 		//set old agents' score to 0
 		//TODO mutate existing agents
 		for (Agent[] aa: agents) {
 			for (Agent a: aa) {
-				if (a!=null) {
-					a.setScore(0);
-					if (random.nextDouble()<mutationChance) {
-						a.mutate();
-					}
+				totalScore += a.getScore();
+				a.setScore(0);
+				if (random.nextDouble()<mutationChance) {
+					a.mutate();
 				}
 			}
-		}
-		
-		addAgentToGeneration();
-		addAgentToGeneration();
-		addAgentToGeneration();
-		
-		int j = 1;
-		for (int i=0; i<nofAgents*ratioToRemoveEachRound; i++) {
-			addAgentToGeneration(new Agent(getBestAgent(j), getBestAgent(++j)));
 		}
 	}
 	
@@ -176,6 +171,7 @@ public class Generation {
 		Agent bestAgent = getBestAgent(1);
 		
 		double[] averageBehavior = new double[4];
+		
 		for (Agent[] aa: agents) {
 			for (Agent a: aa) {
 				for (int i=0; i<4; i++) {
@@ -206,7 +202,7 @@ public class Generation {
 		}
 		
 		generationDetailsOutput.println(String.format(
-				"%d,%s,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+				"%d,%s,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d",
 				generationId,
 				bestAgent.getBehaviorForCsv(),
 				Math.pow(diviationSum[0]/(nofAgents-1), 0.5),
@@ -220,8 +216,10 @@ public class Generation {
 				averageOfBestAgents[0]/nofAgentsIncludedInAverage,
 				averageOfBestAgents[1]/nofAgentsIncludedInAverage,
 				averageOfBestAgents[2]/nofAgentsIncludedInAverage,
-				averageOfBestAgents[3]/nofAgentsIncludedInAverage
+				averageOfBestAgents[3]/nofAgentsIncludedInAverage,
+				totalScore
 			));
+		totalScore = 0;
 	}
 	
 	public void printAgentsToConsole() {
