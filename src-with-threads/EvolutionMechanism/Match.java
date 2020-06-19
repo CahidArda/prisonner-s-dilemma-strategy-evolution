@@ -67,13 +67,13 @@ public class Match {
 	
 	int outcomeToIndex(int outcome) {
 		switch  (outcome) {
-		case(3):
+		case(RScore):
 			return 0;
-		case(0):
+		case(SScore):
 			return 1;
-		case(5):
+		case(TScore):
 			return 2;
-		case(1):
+		case(PScore):
 			return 3;
 		}
 		return 4;
