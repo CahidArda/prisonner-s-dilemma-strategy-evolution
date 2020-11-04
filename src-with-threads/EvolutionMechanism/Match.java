@@ -41,7 +41,7 @@ public class Match {
 	void playRound(int outcome0, int outcome1) {
 		for (int i=0; i<nofGames; i++) {
 			boolean cooperate0 = a.decide(outcomeToIndex(outcome0));
-			boolean cooperate1 = b.decide(outcomeToIndex(outcome0));
+			boolean cooperate1 = b.decide(outcomeToIndex(outcome1));
 			
 			if (cooperate0) {
 				if (cooperate1) {
