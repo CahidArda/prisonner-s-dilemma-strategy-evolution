@@ -43,7 +43,7 @@ When initializing strategy probabilities for a new agent, I was using pseudo-ran
 ##### Graph 5
 ![](./previous_results/_graphs/s1.png)
 
-This was the first time cooperative strategy gained dominance. Best performing agent always had high S probability and average S probability gradually increased. After this short test with 1000 generations, I ran another test to see how strategies evolved for more generations:
+This was the first time cooperative strategy gained dominance. Best performing agent always had high R probability and average R probability gradually increased. After this short test with 1000 generations, I ran another test to see how strategies evolved for more generations:
 
 ##### Graph 6
 ![](./previous_results/_graphs/s2.png)
