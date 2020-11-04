@@ -56,7 +56,7 @@ This resulted in the following evolution:
 ###### Graph 7
 ![](./previous_results/_graphs/e1.png)
 
-In this test, generations evolved in a way that resulted in a described in the [paper](https://www.nature.com/articles/364056a0) as *Pavlov player*. This type of player is described with the following sentences in the paper:
+In this test, agents evolved in a way that resulted with a strategy described in the [paper](https://www.nature.com/articles/364056a0) as *Pavlov player*. This type of player is described with the following sentences in the paper:
 > A Pavlov player cooperates if and only if both players opted for the same alternative in the previous move. The name stems from the fact that this strategy embodies the almost reflex-like response to the payoff: it repeats its former move if it was rewarded R or T points, but switches behaviour if it was punished by receiving only P or S points.
 
 My second test with more generations created a similar result, with Pavlov domination:
