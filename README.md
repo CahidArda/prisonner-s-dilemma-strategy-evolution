@@ -10,12 +10,12 @@ As I developed the software, I gradually added new functionalities and tested th
 
 I started with the most basic functionalities; creating agents with random strategies, matching them to generate scores, replacing the worst performing agents with new random agents. Results looked like this:
 
-![]./previous_results/_graphs/r1.png
+![](./previous_results/_graphs/r1.png)
 
 In the plots, horizontal axis represents the number of generation. Vertical axis represents agent's probability to cooperate in the next round given the previous result. For example, it we can see that in the first generation, the best performing agent's probability of cooperating is a number just below 0.5 if the previous result is S (blue line).
 
-![]./previous_results/_graphs/r2.png
-![]./previous_results/_graphs/r3.png
+![](./previous_results/_graphs/r2.png)
+![](./previous_results/_graphs/r3.png)
 
 Here are my observations for these 3 initial attemps:
 - Average strategies are stable in uncooperative levels, no changes occur in the overall strategy of the population.
