@@ -25,11 +25,11 @@ In the plots, horizontal axis represents the number of generation. Vertical axis
 
 Here are my observations for these 3 initial attemps:
 - Average strategies are stable in uncooperative levels, no changes occur in the overall strategy of the population.
-- Strategy of the best performing agent often attempts to develop a cooperative strategy but fails everytime.# Welcome to StackEdit!
+- Strategy of the best performing agent often attempts to develop a cooperative strategy but fails everytime.
 
 ### Adding Mutation
 
-My next step was to add mutations. In every simulation, I set a probability of mutation in every generation. This is how it looked like in my first test with mutation added.
+My next step was to add mutations. In every simulation, I set a probability of mutation in every generation. This is how it looked like in my first test with mutation added:
 
 ##### Graph 4
 ![](./previous_results/_graphs/m1.png)
@@ -59,7 +59,7 @@ This resulted in the following evolution:
 In this test, generations evolved in a way that resulted in a described in the [paper](https://www.nature.com/articles/364056a0) as *Pavlov player*. This type of player is described with the following sentences in the paper:
 > A Pavlov player cooperates if and only if both players opted for the same alternative in the previous move. The name stems from the fact that this strategy embodies the almost reflex-like response to the payoff: it repeats its former move if it was rewarded R or T points, but switches behaviour if it was punished by receiving only P or S points.
 
-My second test with more generations created a similar result, with Pavlov domination.
+My second test with more generations created a similar result, with Pavlov domination:
 
 ###### Graph 8
 ![](./previous_results/_graphs/e2.png)
@@ -73,7 +73,7 @@ Another Pavlov dominated group of agents evolved:
 ###### Graph 9
 ![](./previous_results/_graphs/t1.png)
 
-When I increased the noise (probability of making a mistake), all agents evolved to uncooperative agents.
+When I increased the noise (probability of making a mistake), all agents evolved to uncooperative agents:
 
 ###### Graph 10
 ![](./previous_results/_graphs/t2.png)
