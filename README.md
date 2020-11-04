@@ -50,7 +50,7 @@ This was the first time cooperative strategy gained dominance. Best performing a
 
 ### Adding Evolution Step 2
 
-Until know, there were two ways for agents with new strategy probabilities to enter the generation: One is when worst performing agents get deleted and new agents with random strategies are created insted, and the other way is when an existing agents get mutated. In this step, I changed the former one so that strategy initialization is not random but is done by blending the strategies of the best performing agents.
+Until now, there were two ways for agents with new strategy probabilities to enter the generation: One is when worst performing agents get deleted and new agents with random strategies are created insted, and the other way is when an existing agents get mutated. In this step, I changed the former one so that strategy initialization is not random but is done by blending the strategies of the best performing agents.
 This resulted in the following evolution:
 
 ###### Graph 7
@@ -63,3 +63,17 @@ My second test with more generations created a similar result, with Pavlov domin
 
 ###### Graph 8
 ![](./previous_results/_graphs/e2.png)
+
+### Trembling Hand
+
+I then implemented the concept of *trembling hand*. This is analogus to adding noise to the environment. Agents occasionally miscommunicate and make mistakes: They cooperate or betray by mistake.
+
+Another Pavlov dominated group of agents evolved:
+
+###### Graph 9
+![](./previous_results/_graphs/t1.png)
+
+When I increased the noise (probability of making a mistake), all agents evolved to uncooperative agents.
+
+###### Graph 10
+![](./previous_results/_graphs/t2.png)
