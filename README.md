@@ -77,3 +77,12 @@ When I increased the noise (probability of making a mistake), all agents evolved
 
 ###### Graph 10
 ![](./previous_results/_graphs/t2.png)
+
+### Final Run
+
+After completing every features, I wanted to run the simulation for thousands of times but there was an issue. It was taking too long. I decided to look into multi-threading to run the simulation faster. After implementing multi-threading, I ran the simulation for 100.000 generations and I got the following result:
+
+###### Graph 11
+![](./previous_results/_graphs/g1.png)
+
+In this run there was again a Pavlov domination, but then this domination collapsed towards the end for reasons I don't know.
