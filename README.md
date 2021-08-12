@@ -1,21 +1,29 @@
+# Prisonner's Dilemma Strategy Evolution
+
 In this project I tried to recreate the results reached in an article named [A strategy of win-stay, lose-shift that outperforms tit-for-tat in the Prisoner's Dilemma game](https://www.nature.com/articles/364056a0)
 
-In the article, simulation is explained with the followirng sentences:
+In the article, the simulation is explained with the followirng sentences:
 
 > Two players are engaged in the Prisonner's Dilemma and have to choose between cooperation (C) and defection (D). According to their decisions, they are awarded with points. In any given round, the two players receive R points if both cooperate and only P points if they both defect; but a defector exploiting a cooperator gets T points, while the cooperator receives S (with T>R>P>S and 2R>T+S). Thus in a single round it is always best to defect, but cooperation may be rewarded in an iterated (or spatial) Prisoner's Dilemma.
 
-There are two seperate folders, containing two seperate programs in this repository. One is the first implementation, written without use of multi-threading; in the second implementation, I tried to harness the power of multi-threading and somewhat succeeded.
+## Project Directory
+
+There are four seperate folders in this repository:
+* output: folder where the simulation results are written to. There is also a real-time plotting script.
+* previous_results: record of the results obtained during code development. This data is then used to create plots in the __graph folder.
+* src-with-threads: code for the simulation with threads can be found in this folder
+* src-without-threads: code for the simulation without threads can be found in this folder
 
 ## Results
 
-As I developed the software, I gradually added new functionalities and tested them by generating data and observing the evolution of behavior of agents.
+As I developed the code, I gradually added new features and tested them by generating data and observing the evolution of agent behaviour.
 
-I started with the most basic functionalities; creating agents with random strategies, matching them to generate scores, replacing the worst performing agents with new random agents. Results looked like this:
+I started with the most basic features; creating agents with random strategies, matching them to generate scores, replacing the worst performing agents with new random agents. Results looked like this:
   
 ##### Graph 1
 ![](./previous_results/_graphs/r1.png)
 
-In the plots, horizontal axis represents the number of generation. Vertical axis represents agent's probability to cooperate in the next round given the previous result. For example, it we can see that in the first generation, the best performing agent's probability of cooperating is a number just below 0.5 if the previous result is S (blue line).
+In the plots, horizontal axis represents the number of generation. Vertical axis represents agent's probability to cooperate in the next round given the previous result. For example, we can see that in the first generation, the best performing agent's probability of cooperating is a number just below 0.5 if the previous result is S (blue line).
   
 ##### Graph 2
 ![](./previous_results/_graphs/r2.png)
@@ -64,6 +72,8 @@ My second test with more generations created a similar result, with Pavlov domin
 ###### Graph 8
 ![](./previous_results/_graphs/e2.png)
 
+Another thing we can observe is that the worst performing agent strategy is no longer a random behaivour. It is similar to the most common strategy of the population.
+
 ### Trembling Hand
 
 I then implemented the concept of *trembling hand*. This is analogus to adding noise to the environment. Agents occasionally miscommunicate and make mistakes: They cooperate or betray by mistake.
@@ -85,4 +95,4 @@ After completing every features, I wanted to run the simulation for thousands of
 ###### Graph 11
 ![](./previous_results/_graphs/g1.png)
 
-In this run there was again a Pavlov domination, but then this domination collapsed towards the end for reasons I don't know.
+In this run there was again a Pavlov domination, but interestingly this domination collapsed towards the end.
